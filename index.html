@@ -1,49 +1,49 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="es">
 <head>
-    <title>FlowPaper Javascript Package</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta content="IE=Edge" http-equiv="X-UA-Compatible"></meta>
-    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
-    <style type="text/css" media="screen">
-        html, body { height:100%; }
-        body { margin:0; padding:0; overflow:auto;}
-        #flashContent { display:none; }
-    </style>
-
-    <link href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="css/flowpaper.css" />
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery.extensions.min.js"></script>
-    <!--[if gte IE 10 | !IE ]><!-->
-    <script type="text/javascript" src="js/three.min.js"></script>
-    <!--<![endif]-->
-    <script type="text/javascript" src="js/flowpaper.js"></script>
-    <script type="text/javascript" src="js/flowpaper_handlers.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Flipbook Instantáneo</title>
+    <!-- Incluye jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Incluye los archivos de FlowPaper -->
+    <link rel="stylesheet" href="https://flowpaper.com/Script/flowpaper.css">
+    <script src="https://flowpaper.com/Script/flowpaper.js"></script>
 </head>
 <body>
-<div id="documentViewer" class="flowpaper_viewer" style="position:absolute;left:10px;top:10px;width:900px;height:620px"></div>
+    <h1>Mi Flipbook Instantáneo con FlowPaper</h1>
+    <!-- Contenedor del flipbook -->
+    <div id="flipbookContainer" style="width: 100%; height: 600px;"></div>
 
-<script type="text/javascript">
-    $('#documentViewer').FlowPaperViewer(
-            { config : {
-                PDFFile     : 'pdf/Paper.pdf',
-                EnableWebGL : true,
-                UIConfig    : 'UI_Zine.xml'
-            }}
-    );
-</script>
-
-<script type="text/javascript">
-    var url = window.location.href.toString();
-
-    if(location.length==0){
-        url = document.URL.toString();
-    }
-
-    if(url.indexOf("file:")>=0){
-        jQuery('#documentViewer').html("<div style='position:relative;background-color:#ffffff;width:420px;font-family:Verdana;font-size:10pt;left:22%;top:20%;padding: 10px 10px 10px 10px;border-style:solid;border-width:5px;'><img src=''>&nbsp;<b>You are trying to use FlowPaper from a local directory.</b><br/><br/> FlowPaper needs to be copied to a web server before the viewer can display its document properly.<br/><br/>Please copy the FlowPaper files to a web server and access the viewer through a http:// url.</div>");
-    }
-</script>
+    <script>
+        $(document).ready(function() {
+            $("#flipbookContainer").FlowPaperViewer({
+                config: {
+                    PDFFile: "pdf/Paper.pdf", // Cambia esta ruta a la de tu archivo PDF
+                    Scale: 1.0, // Escala inicial del documento
+                    ZoomTransition: 'easeOut', // Efecto de transición del zoom
+                    ZoomTime: 0.5, // Tiempo de transición del zoom en segundos
+                    ZoomInterval: 0.1, // Intervalo de zoom
+                    FitPageOnLoad: true, // Ajustar la página al cargar
+                    FitWidthOnLoad: false, // Ajustar el ancho al cargar
+                    FullScreenAsMaxWindow: false, // Pantalla completa como ventana máxima
+                    ProgressiveLoading: false, // Carga progresiva de las páginas
+                    MinZoomSize: 0.2, // Tamaño mínimo de zoom
+                    MaxZoomSize: 5, // Tamaño máximo de zoom
+                    SearchMatchAll: false, // Coincidencia de búsqueda en todo el documento
+                    InitViewMode: 'Portrait', // Modo de vista inicial
+                    RenderingOrder: 'html5', // Orden de renderizado
+                    StartAtPage: 1, // Página inicial
+                    EnableWebGL: false, // Habilitar WebGL
+                    ViewModeToolsVisible: true, // Herramientas de modo de vista visibles
+                    ZoomToolsVisible: true, // Herramientas de zoom visibles
+                    NavToolsVisible: true, // Herramientas de navegación visibles
+                    CursorToolsVisible: true, // Herramientas de cursor visibles
+                    SearchToolsVisible: true, // Herramientas de búsqueda visibles
+                    localeChain: 'es_ES' // Cadena de localización
+                }
+            });
+        });
+    </script>
 </body>
 </html>
