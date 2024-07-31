@@ -25,25 +25,25 @@
 <div id="documentViewer" class="flowpaper_viewer" style="position:absolute;left:10px;top:10px;width:900px;height:620px"></div>
 
 <script type="text/javascript">
-    $('#documentViewer').FlowPaperViewer(
-            { config : {
-                PDFFile     : 'pdf/EC409.pdf',
-                EnableWebGL : true,
-                UIConfig    : 'UI_Zine.xml'
-                startPage: 1,
-            endPage: 32,
-            }}
-    );
+    $('#documentViewer').FlowPaperViewer({
+        config: {
+            PDFFile: 'pdf/EC409.pdf',
+            EnableWebGL: true,
+            UIConfig: 'UI_Zine.xml',
+            startPage: 1,
+            endPage: 32
+        }
+    });
 </script>
 
 <script type="text/javascript">
     var url = window.location.href.toString();
 
-    if(location.length==0){
+    if (location.length == 0) {
         url = document.URL.toString();
     }
 
-    if(url.indexOf("file:")>=0){
+    if (url.indexOf("file:") >= 0) {
         jQuery('#documentViewer').html("<div style='position:relative;background-color:#ffffff;width:420px;font-family:Verdana;font-size:10pt;left:22%;top:20%;padding: 10px 10px 10px 10px;border-style:solid;border-width:5px;'><img src=''>&nbsp;<b>You are trying to use FlowPaper from a local directory.</b><br/><br/> FlowPaper needs to be copied to a web server before the viewer can display its document properly.<br/><br/>Please copy the FlowPaper files to a web server and access the viewer through a http:// url.</div>");
     }
 </script>
